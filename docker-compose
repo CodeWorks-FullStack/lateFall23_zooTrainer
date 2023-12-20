@@ -1,0 +1,8 @@
+version: '3'
+services:
+  app:
+    image: your-dockerhub-username/zooTrainer:latest
+    env_file:
+      - zooTrainer-env
+    ports:
+      - "3000:3000"
