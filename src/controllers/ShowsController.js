@@ -15,9 +15,9 @@ export class ShowsController extends BaseController{
 
   async createShow(request, response, next){
     try {
-      const userInfo = request.userInfo
+      const userInfo = request.userInfo // because this route is below the the .use in the router above, we will have access to userInfo on the request. this userInfo has things like {name, email, picture, id}
       const showData = request.body
-      showData.accountId = userInfo.id // After pulling the data from both sources, force the logged in user to be the 'owner'
+      showData.accountId = userInfo.id // After pulling the data from both sources, force the logged in user to be the 'owner' of the show
       const show = await showsService.createShow(showData)
       response.send(show)
     } catch (error) {

@@ -1,6 +1,10 @@
 import { Schema } from "mongoose";
 
-
+// REVIEW animal is a One to Many relationship
+// Animals are one to many relationships because the animal can only have a relation to ONE exhibit. Meanwhile the exhibit (parent) can have MANY animals linked to it.
+//        [exhibit]
+//      ↗️   ⬆️   ↖️
+// [animal][animal][animal]
 
 export const AnimalSchema = new Schema({
   name: {type: String, required: true, minLength: 3, maxLength: 25},
@@ -8,6 +12,7 @@ export const AnimalSchema = new Schema({
   exhibitId: {type: Schema.Types.ObjectId, ref: 'Exhibit', required: true}
 },{toJSON: {virtuals: true}})
 // NOTE virtual properties, are properties on an object, that don't exist on the object in the database, but CAN exist on the object for your response
+
 
 AnimalSchema.virtual('exhibit',
 {

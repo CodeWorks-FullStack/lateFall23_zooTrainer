@@ -15,9 +15,9 @@ export class ExhibitsController extends BaseController{
     this.router
     .post('', this.createExhibit)
     .get('', this.getExhibits)
-    .use(_middleWareExample)
+    .use(_middleWareExample) // NOTE .use attaches middleware to our router, as requests go through the router (down the list), to get to the lower routes, it must go through the middleware
     .get('/:exhibitId/animals', this.getAnimalsInExhibit)
-    .use(Auth0Provider.getAuthorizedUserInfo)
+    .use(Auth0Provider.getAuthorizedUserInfo) // this middle ware is specifically tied with our AUTH0 variables in the .env and confirms that the user hitting the api has a token, and retrieves there information.
     .get('/demo/whodis', this.demoWhoDis)
   }
 

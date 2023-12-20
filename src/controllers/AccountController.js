@@ -9,8 +9,7 @@ export class AccountController extends BaseController {
     this.router
       .use(Auth0Provider.getAuthorizedUserInfo)
       .get('', this.getUserAccount)
-      .get('/myShows', this.getMyShows)
-
+      .get('/myShows', this.getMyShows) // we don't need any route params here, because we are going to use the userinfo on the request to get the accounts id instead.
   }
 
   async getUserAccount(req, res, next) {
